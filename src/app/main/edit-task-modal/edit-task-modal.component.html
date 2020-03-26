@@ -1,0 +1,98 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{task.id ? 'Edit' : 'Add'}} Task</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="name" class="label">
+        Name
+        <span class="text-warning">*</span>
+      </label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+      <app-field-error-message [control]="formGroup.controls['name']"></app-field-error-message>
+    </div>
+    <div class="form-group">
+      <label for="description" class="label">
+        Description
+        <span class="text-warning">*</span>
+      </label>
+      <input type="text" id="description" class="form-control" formControlName="description">
+      <app-field-error-message [control]="formGroup.controls['description']"></app-field-error-message>
+    </div>
+    <div class="form-group" *ngIf="!hide"> 
+      <label for="project" class="label">
+        Project
+        <span class="text-warning">*</span>
+      </label>      
+      <ng-select  [items] = "projects"
+                  bindLabel = "name"
+                  bindValue = "id"
+                  placeholder = "Select Project"
+                  clearAllText = "Clear"
+                  formControlName = "project">
+        <ng-template ng-option-tmp let-item = "item">
+        {{item.name}}
+        </ng-template>
+      </ng-select> 
+      <app-field-error-message [control]="formGroup.controls['project']"></app-field-error-message>
+    </div>
+    <div class="form-group">
+      <label for="assignee" class="label">
+        Assignee
+        <span class="text-warning">*</span>
+      </label>
+      <ng-select  [items] = "users"
+                  bindLabel = "name"
+                  bindValue = "id"
+                  placeholder = "Select Creator"
+                  clearAllText = "Clear"
+                  formControlName = "assignee">
+        <ng-template ng-option-tmp let-item = "item">
+        {{item.name}}
+        </ng-template>
+      </ng-select> 
+      <app-field-error-message [control]="formGroup.controls['assignee']"></app-field-error-message>
+    </div>
+    
+    <div class="form-group">
+      <label for="creator" class="label">
+        Creator
+        <span class="text-warning">*</span>
+      </label>
+      <input type="text" id="creator"disabled class="form-control" formControlName="creator">
+      <app-field-error-message [control]="formGroup.controls['creator']"></app-field-error-message>
+    </div>
+  
+    <div class="form-group">
+      <label for="dueDate" class="label">
+        DueDate
+        <span class="text-warning">*</span>
+      </label>
+      <div class="input-group">
+        <input class="form-control" formControlName="dueDate" placeholder="yyyy-mm-dd" id="dueDate" [(ngModel)]="dueDate" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="status" class="label">
+        Status Info
+        <span class="text-warning"></span>
+      </label>
+      <input type="text" id="status" disabled class="form-control" formControlName="status">
+      <input type="hidden" id="oldStatus" class="form-control" formControlName="oldStatus">
+      <app-field-error-message [control]="formGroup.controls['status']"></app-field-error-message>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">Save</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+  </div>
+</form>

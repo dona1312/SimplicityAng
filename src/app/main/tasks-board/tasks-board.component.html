@@ -1,0 +1,167 @@
+<app-menu-header></app-menu-header>
+<app-menu-sidebar class="sidebar"></app-menu-sidebar>
+<div class="container-fluid">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Tickets dashboard</h3>
+                </div>
+                <div class="col-sm-6 ml-auto text-right">
+                  <a (click)="onEditClick()" class="btn btn-add"  data-toggle="modal">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    <span>Add New Task</span>
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  <hr>
+  
+    <div class=" table-wrapper table-title row">
+        <div class="milestone-col col-md-2" droppable (onDrop)="onStatusDrop(statusToDo, $event)">
+              <div class="text-center">
+                <label class="smpl-label">To Do</label>
+              </div>
+						<div *ngFor="let task of todos"
+               [draggable]="true" 
+               [dragData]="task"
+               droppable
+               (onDrop)="onTaskDrop(task, $event)"
+							 class="task-item alert alert-styled-left" [ngClass]="{'is-expiring': task.isExpiring, 'is-expired': task.isExpired}">
+							<h5>{{task.name}}</h5>
+							<p class="text-muted">{{task.assignee.name}}</p>
+							<p class="text-muted">End: {{task.dueDate | date :  "dd.MM.yyyy"}}</p>
+              <p class="text-muted">{{task.description}}</p>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-success margin-right-5" tooltip="Edit" (click)="onEditClick(task)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(task.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+						</div>
+        </div>
+        <div class="milestone-col col-md-2" droppable (onDrop)="onStatusDrop(statusInProgress, $event)">
+            <div class="text-center">
+                <label class="smpl-label">In Progress</label>
+            </div>
+						<div *ngFor="let task of inprogress"
+               [draggable]="true"
+               [dragData]="task"
+               droppable
+               (onDrop)="onTaskDrop(task, $event)"
+							 class="task-item alert alert-styled-left" [ngClass]="{'is-expiring': task.isExpiring, 'is-expired': task.isExpired}">
+							<h5>{{task.name}}</h5>
+							<p class="text-muted">{{task.assignee.name}}</p>
+							<p class="text-muted">End: {{task.dueDate | date :  "dd.MM.yyyy"}}</p>
+              <p class="text-muted">{{task.description}}</p>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-success margin-right-5" tooltip="Edit" (click)="onEditClick(task)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(task.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+						</div>
+        </div>
+        <div class="milestone-col col-md-2" droppable (onDrop)="onStatusDrop(statusInReview, $event)">
+            <div class="text-center">
+                <label class="smpl-label">In Review</label>
+              </div>
+						<div *ngFor="let task of inreview"
+               [draggable]="true"
+               [dragData]="task"
+               droppable
+               (onDrop)="onTaskDrop(task, $event)"
+							 class="task-item alert alert-styled-left" [ngClass]="{'is-expiring': task.isExpiring, 'is-expired': task.isExpired}">
+							<h5>{{task.name}}</h5>
+							<p class="text-muted">{{task.assignee.name}}</p>
+							<p class="text-muted">End: {{task.dueDate | date :  "dd.MM.yyyy"}}</p>
+              <p class="text-muted">{{task.description}}</p>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-success margin-right-5" tooltip="Edit" (click)="onEditClick(task)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(task.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+						</div>
+        </div>
+        <div class="milestone-col col-md-2" droppable (onDrop)="onStatusDrop(statusQaToDo, $event)">
+            <div class="text-center">
+                <label class="smpl-label">QA To Do</label>
+              </div>
+						<div *ngFor="let task of qatodo"
+               [draggable]="true"
+               [dragData]="task"
+               droppable
+               (onDrop)="onTaskDrop(task, $event)"
+							 class="task-item alert alert-styled-left" [ngClass]="{'is-expiring': task.isExpiring, 'is-expired': task.isExpired}">
+							<h5>{{task.name}}</h5>
+							<p class="text-muted">{{task.assignee.name}}</p>
+							<p class="text-muted">End: {{task.dueDate | date :  "dd.MM.yyyy"}}</p>
+              <p class="text-muted">{{task.description}}</p>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-success margin-right-5" tooltip="Edit" (click)="onEditClick(task)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(task.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+						</div>
+        </div>
+        <div class="milestone-col col-md-2" droppable (onDrop)="onStatusDrop(statusQaInProgress, $event)">
+            <div class="text-center">
+                <label class="smpl-label">QA In Progress</label>
+              </div>
+						<div *ngFor="let task of qainprogress"
+               [draggable]="true"
+               [dragData]="task"
+               droppable
+               (onDrop)="onTaskDrop(task, $event)"
+							 class="task-item alert alert-styled-left" [ngClass]="{'is-expiring': task.isExpiring, 'is-expired': task.isExpired}">
+							<h5>{{task.name}}</h5>
+							<p class="text-muted">{{task.assignee.name}}</p>
+							<p class="text-muted">End: {{task.dueDate | date :  "dd.MM.yyyy"}}</p>
+              <p class="text-muted">{{task.description}}</p>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-success margin-right-5" tooltip="Edit" (click)="onEditClick(task)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(task.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+						</div>
+        </div>
+        <div class="milestone-col col-md-2" droppable (onDrop)="onStatusDrop(statusDone, $event)">
+          <div class="text-center">
+            <label class="smpl-label">Done</label>
+          </div>
+						<div *ngFor="let task of done"
+               [draggable]="true"
+               [dragData]="task"
+               droppable
+               (onDrop)="onTaskDrop(task, $event)"
+							 class="task-item done alert alert-styled-left" [ngClass]="{'is-expiring': task.isExpiring, 'is-expired': task.isExpired}">
+							<h5>{{task.name}}</h5>
+							<p class="text-muted">{{task.assignee.name}}</p>
+							<p class="text-muted">End: {{task.dueDate | date :  "dd.MM.yyyy"}}</p>
+              <p class="text-muted">{{task.description}}</p>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-success margin-right-5" tooltip="Edit" (click)="onEditClick(task)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(task.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+						</div>
+        </div>
+    </div>
+</div>

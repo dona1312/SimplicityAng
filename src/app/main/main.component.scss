@@ -1,0 +1,46 @@
+/*Navbar menu*/
+#logo-navbar{
+	color: rgb(230,180,124);
+	font-weight:bold;
+}
+#profile-icon-navbar{
+	margin-top: -0.2rem;
+	color: rgb(230,180,124);
+	font-size: 1.2rem;
+}
+
+
+.table-wrapper {
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+}
+.btn-add{
+	background-color: #01C6D7;
+}
+.btn-add:hover{
+	background-color: #052963;
+    border-color: #052963;
+}
+
+
+.table-title .btn-group {
+    float: right;
+}
+.table-title .btn {
+    color: #fff;
+    float: right;
+    font-size: 0.8rem;
+    border: none;
+    outline: none !important;
+    margin-left: 0.6rem;
+}
+.table-title .btn i {
+    float: left;
+    font-size: 1.2rem;
+    margin-right: 0.3rem;
+}
+.table-title .btn span {
+    float: left;
+    margin-top: 2px;
+}

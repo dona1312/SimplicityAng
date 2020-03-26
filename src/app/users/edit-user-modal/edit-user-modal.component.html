@@ -1,0 +1,74 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">{{user.id ? 'Edit' : 'Add'}} User</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="form-group" *ngIf="!hide"> 
+			<label for="username" class="label">
+				UserName
+				<span class="text-warning">*</span>
+			</label>
+			<input type="text" id="username" class="form-control" formControlName="username">
+			<app-field-error-message [control]="formGroup.controls['username']"></app-field-error-message>
+		</div>
+		<div class="form-group">
+			<label for="name" class="label">
+				Name
+				<span class="text-warning">*</span>
+			</label>
+			<input type="text" id="name" class="form-control" formControlName="name">
+			<app-field-error-message [control]="formGroup.controls['name']"></app-field-error-message>
+		</div>
+		<div class="form-group" *ngIf="!hide"> 
+			<label for="password" class="label">
+				Password
+				<span class="text-warning">*</span>
+			</label>
+			<input type="text" id="password" class="form-control" formControlName="password">
+			<app-field-error-message [control]="formGroup.controls['password']"></app-field-error-message>
+		</div>
+		<div class="form-group">
+			<label for="address" class="label">
+				Address
+				<span class="text-warning">*</span>
+			</label>
+			<input type="text" id="address" class="form-control" formControlName="address">
+			<app-field-error-message [control]="formGroup.controls['address']"></app-field-error-message>
+		</div>
+		<!--
+		<div class="form-group">
+			<label for="role" class="label">
+				Role
+				<span class="text-warning">*</span>
+			</label>
+			<input type="text" id="role" class="form-control" formControlName="role">
+			<app-field-error-message [control]="formGroup.controls['role']"></app-field-error-message>
+		</div>
+		-->
+		<div class="form-group">
+			<label for="role" class="label">
+				Role
+			<span class="text-warning">*</span>
+			</label>
+			<ng-select  [items] = "userRole"
+						bindLabel = "name"
+						bindValue = "id"
+						placeholder = "Select Role"
+						clearAllText = "Clear"
+						formControlName = "role">
+			<ng-template ng-option-tmp let-item = "item">
+			{{item.name}}
+			</ng-template>
+		</ng-select> 
+		<app-field-error-message [control]="formGroup.controls['role']"></app-field-error-message>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">Save</button>
+		<button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+	</div>
+</form>

@@ -1,0 +1,51 @@
+<app-menu-header></app-menu-header>
+<div class="container-fluid">
+  <!--
+  <nav class="navbar navbar-expand-lg bg-white pb-3" >        
+    <a class="navbar-brand"  href="#"><h2 id="logo-navbar">TaskDOIT</h2> </a>       
+    <div class="ml-auto form-inline ">
+      <button id="custom-btn-signin" class="btn btn-outline-primary text-uppercase ml-5" >Projects</button>
+    </div>
+  </nav>
+  -->
+  <div class="table-wrapper">
+      <div class="table-title">
+          <div class="row">
+              <div class="col-sm-6">
+                  <h3>Manage <b>Projects</b></h3>
+              </div>
+              <div class="col-sm-6 ml-auto">
+                <a href="#addTaskModal" class="btn btn-add"  (click)="onEditClick()" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Add New Project</span></a>
+                <!--<a href="#deleteTaskModal" class="btn btn-danger" data-toggle="modal"><i class="fa fa-minus-circle" aria-hidden="true"></i><span>Delete</span></a> -->       
+              </div>
+          </div>
+      </div>
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>From Date</th>
+                  <th>To Date</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr  *ngFor="let project of projects" >
+                  <td>{{project.id}}</td>
+                  <td>{{project.name}}</td>
+                  <td> {{project.fromDate | date :  "dd.MM.yyyy"}}</td>
+                  <td> {{project.toDate | date :  "dd.MM.yyyy"}}</td>
+                  <td>
+                      <button type="button" class="btn btn-outline-success" tooltip="Edit" (click)="onEditClick(project)" style="margin-right: 10px">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger" tooltip="Delete" (click)="onDeleteClick(project.id)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>                      
+                  </td>
+                </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>

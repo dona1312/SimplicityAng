@@ -1,0 +1,126 @@
+.left{
+  width: 60%;
+  // background-color: #031F4E; 
+  background-color: #FFF;
+  height: 100%;  
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.right{
+  width: 40%;
+  background-color: #01C6D7;
+  float: right;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  
+}
+
+.smp-label{
+  color: #031F4E;
+}
+
+.form-holder{
+  display: flex;
+  margin-top: 22%;
+  margin-left: 20%;
+  margin-bottom: 22%;
+}
+
+#mainName{
+  color: #031F4E;
+  text-align: center;
+  font-size: 4em;
+}
+
+#smpl-container{
+  margin-top: 350px;
+}
+
+
+#form-center{
+	/*ONLY WORKING DECISION*/
+		/*to center of page*/
+		margin: 0 auto;
+		justify-content: center;
+  		align-items: center;
+
+}
+.card-signin{
+	background-color: rgb(255,255,255);
+	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+	border:none;
+	-moz-border-radius:0.25rem;  /* for Firefox */
+	-webkit-border-radius:0.25rem; /* for Webkit-Browsers */
+	-o-border-radius:0.25rem; /* for Opera-Browsers */
+	border-radius:0.25rem; 
+	padding: 3rem;
+}
+
+#custom-card-title{
+	color: #e6b47c;
+	font-weight: bold;
+}
+
+.btn-link{
+  color: #031F4E;
+  font-size: 1.2rem;
+	font-weight: bold;
+}
+#register-btn{
+	background-color: #031F4E;
+	border-color: #031F4E;
+	font-size: 1.2rem;
+	font-weight: bold;
+	letter-spacing: .1rem;
+}
+
+#register-btn:hover{
+	background-color: white;
+	border-color: white;
+	font-size: 1.2rem;
+  font-weight: bold;
+  color: #031F4E;
+	letter-spacing: .1rem;
+}
+
+
+.form-signin {
+  width: 100%;
+}
+
+#inputUsername, #inputEmail , #inputPass , #inputConfirmPass{
+	border: 0.1rem solid #66cc9a;
+}
+
+.form-signin .btn {
+  font-size: 1.2rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input,
+.form-label-group label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+#custom-link{
+	font-weight: bold;
+	font-size: 1.2rem;
+	color:  #031F4E;
+}
+
+#custom-link:hover{
+	text-decoration: none;
+	color: white;
+	transition: all .1s ease-in-out;
+}

@@ -1,0 +1,71 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{project.id ? 'Edit' : 'Add'}} Project</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label for="name" class="label">
+          Name
+          <span class="text-warning">*</span>
+        </label>
+        <input class="form-control" formControlName="name" type="text" id="name"  [(ngModel)]="name" >
+        <app-field-error-message [control]="formGroup.controls['name']"></app-field-error-message>
+      </div>
+
+      <div class="form-group">
+        <label for="fromDate" class="label">
+          From Date
+          <span class="text-warning">*</span>
+        </label>
+        <div class="input-group">
+          <input class="form-control" formControlName="fromDate" placeholder="yyyy-mm-dd" 
+          [(ngModel)]="fromDate" ngbDatepicker #from="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="from.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="toDate" class="label">
+          To Date
+          <span class="text-warning">*</span>
+        </label>
+        <div class="input-group">
+          <input class="form-control" formControlName="toDate" placeholder="yyyy-mm-dd"
+           [(ngModel)]="toDate" ngbDatepicker #to="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="to.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="users" class="label">
+              Assigned users
+          </label>
+          <ng-select
+            [items]="allUsers"
+            [multiple]="true"
+            [closeOnSelect]="false"
+            [searchable]="false"
+            bindLabel = "name"
+            bindValue = "id"
+            formControlName="users"
+            placeholder="Select users"
+            [(ngModel)]="selectedUsers">
+            <ng-template ng-option-tmp let-item = "item">
+                {{item.name}}
+            </ng-template>
+          </ng-select>
+      </div>
+    </div>
+  
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">Save</button>
+      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+    </div>
+  </form>
