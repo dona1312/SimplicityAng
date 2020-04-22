@@ -23,6 +23,10 @@ export class ProjectService {
   getNameAndID() : Observable<NameAndID[]>  {
     return this.http.get<NameAndID[]>(`${environment.apiUrl}/api/projects/getProjectNameAndIds`);
   }
+
+  getNameAndIDByUserId(userId:number) : Observable<NameAndID[]>  {
+    return this.http.get<NameAndID[]>(`${environment.apiUrl}/api/projects/getProjectByUserId/?id=${userId}`);
+  }
   
 
   getById(id: number) {

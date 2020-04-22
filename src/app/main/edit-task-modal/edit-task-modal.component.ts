@@ -56,8 +56,8 @@ export class EditTaskModalComponent implements OnInit {
   }
 
   ngOnInit() {	
-	this.buildForm(this.task,this.name);
-	this.RequestNameAndID();
+		this.buildForm(this.task,this.name);
+		this.RequestNameAndID(this.authenticationService.currentUserValue.id);
   }
 
   private buildForm(task?: Task,name?: string) {
@@ -137,12 +137,12 @@ export class EditTaskModalComponent implements OnInit {
 			});
   }
 
-  RequestNameAndID(){
+  RequestNameAndID(userId:number){
 		this.userService.getNameAndID().pipe(first()).subscribe(users => {		
 			this.users = users;
 		});
-
-		this.projectService.getNameAndID().pipe(first()).subscribe(proj => {		
+debugger;
+		this.projectService.getNameAndIDByUserId(userId).pipe(first()).subscribe(proj => {		
 			this.projects = proj;
 		});		
   }
