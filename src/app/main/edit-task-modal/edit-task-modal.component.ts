@@ -141,7 +141,7 @@ export class EditTaskModalComponent implements OnInit {
 		this.userService.getNameAndID().pipe(first()).subscribe(users => {		
 			this.users = users;
 		});
-debugger;
+
 		this.projectService.getNameAndIDByUserId(userId).pipe(first()).subscribe(proj => {		
 			this.projects = proj;
 		});		

@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
 		if (!task) {
 			task = new Task();
 		}
-    
+    debugger;
 		this.bsModalRef = this.bsModalService.show(
       EditTaskModalComponent,
 			{
@@ -82,12 +82,6 @@ export class MainComponent implements OnInit {
   GetLogedUserName() {
     const currentUser = this.authenticationService.currentUserValue;
     this.name = currentUser.userName;
-    /*
-    this.currentUserSubject = new BehaviorSubject<Aut>(JSON.parse(localStorage.getItem('currentUser')));
-		this.userService.getById(this.currentUserSubject.value.id).pipe().subscribe(user => {
-      this.name = user.username;
-    });
-    */
   }
 
   RequestDeleteTask(taskId : number) {

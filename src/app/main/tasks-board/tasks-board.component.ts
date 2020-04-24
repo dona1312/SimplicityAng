@@ -36,6 +36,8 @@ export class TasksBoardComponent implements OnInit {
     private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.GetLogedUserName();
+
     this.getMyTasks();
   }
   private getMyTasks(): void {
@@ -123,6 +125,7 @@ export class TasksBoardComponent implements OnInit {
 		if (!task) {
 			task = new Task();
 		}
+    debugger;
     
 		this.bsModalRef = this.bsModalService.show(
       EditTaskModalComponent,
@@ -151,6 +154,11 @@ export class TasksBoardComponent implements OnInit {
   }
   
   RequestDeleteTask(taskId : number) {
-    this.taskService.delete(taskId).pipe(first()).subscribe(data => {this.RequestTask();});
+    this.taskService.delete(taskId).pipe(first()).subscribe(data => {this.getMyTasks();});
+  }
+
+  GetLogedUserName() {
+    const currentUser = this.authService.currentUserValue;
+    this.name = currentUser.userName;
   }
 }
