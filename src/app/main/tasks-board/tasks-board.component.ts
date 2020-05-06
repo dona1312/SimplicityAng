@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { CustomDate } from 'src/app/_helpers/custom-date';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { EditTaskModalComponent } from '../edit-task-modal/edit-task-modal.component';
+import { AlertService } from 'src/app/_helpers/alert.service';
 
 @Component({
   selector: 'app-tasks-board',
@@ -150,10 +151,17 @@ export class TasksBoardComponent implements OnInit {
   }
 
   onDeleteClick(taskId : number) {
-    this.RequestDeleteTask(taskId);
+    AlertService.showConfirmationModal(
+			'Delete Ticket',
+			'Are you sure you want to delete this ticket?',
+			  () =>  {
+          this.RequestDeleteTask(taskId)
+        }
+    );
   }
   
   RequestDeleteTask(taskId : number) {
+   
     this.taskService.delete(taskId).pipe(first()).subscribe(data => {this.getMyTasks();});
   }
 

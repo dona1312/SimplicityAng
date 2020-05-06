@@ -66,7 +66,14 @@ export class ProjectsComponent implements OnInit {
   }
 
   onDeleteClick(projectId : number) {
-    this.RequestDeleteProject(projectId);
+    AlertService.showConfirmationModal(
+			'Delete Project',
+			'Are you sure you want to delete this project?',
+			  () =>  {
+          this.RequestDeleteProject(projectId);
+        }
+    );
+   
   }
 
   RequestProjects() {

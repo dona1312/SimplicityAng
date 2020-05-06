@@ -70,7 +70,13 @@ export class MainComponent implements OnInit {
   }
 
   onDeleteClick(taskId : number) {
-    this.RequestDeleteTask(taskId);
+    AlertService.showConfirmationModal(
+			'Delete Ticket',
+			'Are you sure you want to delete this ticket?',
+			  () =>  {
+          this.RequestDeleteTask(taskId)
+        }
+    );
   }
 
   RequestTask() { 

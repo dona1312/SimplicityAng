@@ -61,7 +61,14 @@ export class UsersComponent implements OnInit {
   }
 
   onDeleteClick(userId : number) {
-    this.RequestDeleteUsers(userId);
+    AlertService.showConfirmationModal(
+			'Delete User',
+			'Are you sure you want to delete this user?',
+			  () =>  {
+          this.RequestDeleteUsers(userId)
+        }
+    );
+    
   }
   
   RequestUsers() {
